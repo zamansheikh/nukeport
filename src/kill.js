@@ -26,7 +26,7 @@ async function killPid(pid, force = false) {
     return { ok: false, message: 'Invalid PID.' };
   }
   if (pid === process.pid) {
-    return { ok: false, message: 'Refusing to kill nodekill itself.' };
+    return { ok: false, message: 'Refusing to kill nukeport itself.' };
   }
 
   if (process.platform === 'win32') {

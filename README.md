@@ -1,13 +1,13 @@
-# nodekill
+# nukeport
 
 > A beautiful terminal GUI to inspect listening ports, see **which project** owns each one, **kill** processes, and **monitor your system** in real time.
 
-`nodekill` gives you a real-software-feeling dashboard right in your terminal — no Electron, no browser. It scans every listening port, maps it to the owning process **and the project directory it's running from**, and lets you kill a stuck dev server with a single keystroke. A live panel on the side shows CPU, memory, network, load, uptime and battery.
+`nukeport` gives you a real-software-feeling dashboard right in your terminal — no Electron, no browser. It scans every listening port, maps it to the owning process **and the project directory it's running from**, and lets you kill a stuck dev server with a single keystroke. A live panel on the side shows CPU, memory, network, load, uptime and battery.
 
 It works on **Windows, macOS and Linux**.
 
 ```
-┌ nodekill v1.0.0   12 ports   sort:Port   view:listening ───────── myhost · windows  20:14:31 ┐
+┌ nukeport v1.0.0   12 ports   sort:Port   view:listening ───────── myhost · windows  20:14:31 ┐
 │ Listening Ports ───────────────────────────────────┐ CPU 23% ───────────────────────────┐
 │ Port    PID     Process       Project      CPU  Mem │     ╭╮     ╭─╮                       │
 │ 3000    18244   node          my-next-app  1%   2%  │   ╭─╯╰─────╯ ╰──╮                    │
@@ -26,25 +26,25 @@ It works on **Windows, macOS and Linux**.
 ## Install
 
 ```bash
-npm install -g nodekill
+npm install -g nukeport
 ```
 
 Then run:
 
 ```bash
-nodekill      # launch the dashboard
+nukeport      # launch the dashboard
 nk            # short alias
 ```
 
 Or use it without installing:
 
 ```bash
-npx nodekill
+npx nukeport
 ```
 
 ## Features
 
-- **Port → Process → Project mapping.** See not just `PID 18244`, but `node → my-next-app` and the full path `C:\dev\my-next-app`. nodekill resolves the project by reading the process working directory and command line and walking up to the nearest `package.json`.
+- **Port → Process → Project mapping.** See not just `PID 18244`, but `node → my-next-app` and the full path `C:\dev\my-next-app`. nukeport resolves the project by reading the process working directory and command line and walking up to the nearest `package.json`.
 - **One-keystroke kill.** Select a row and press `Enter` (graceful) or `Shift+K` (force). Cross-platform: `taskkill /T` on Windows, `SIGTERM`/`SIGKILL` on Unix. Killing a process tree also stops its children.
 - **Live system monitor.** CPU history chart, memory gauge, network throughput, load average, process count, uptime and battery — refreshing every 1.5s.
 - **Filter & sort.** Press `f` to filter by port, PID, process name or project; press `s` to cycle the sort column.
@@ -69,19 +69,19 @@ npx nodekill
 
 ## Command line (no GUI)
 
-`nodekill` also works headless for scripts and quick one-offs:
+`nukeport` also works headless for scripts and quick one-offs:
 
 ```bash
-nodekill ls               # print a table of listening ports and exit
-nodekill kill 3000        # kill whatever is listening on port 3000
-nodekill kill 3000 -f     # force kill
-nodekill kill 18244       # numbers that aren't a listening port are treated as PIDs
-nodekill --help
+nukeport ls               # print a table of listening ports and exit
+nukeport kill 3000        # kill whatever is listening on port 3000
+nukeport kill 3000 -f     # force kill
+nukeport kill 18244       # numbers that aren't a listening port are treated as PIDs
+nukeport --help
 ```
 
 ## How project detection works
 
-For each listening port nodekill finds the owning PID, then tries — in order:
+For each listening port nukeport finds the owning PID, then tries — in order:
 
 1. The process **current working directory** (`/proc/<pid>/cwd` on Linux, `lsof` on macOS).
 2. The first **real filesystem path** found in the process command line (e.g. the script you ran).
@@ -92,7 +92,7 @@ From that path it walks upward to the nearest `package.json` and reads its `name
 ## Permissions
 
 - Listing ports needs no special privileges.
-- Killing a process you don't own may require running your terminal as **Administrator** (Windows) or with `sudo` (Unix). nodekill reports a clear error when permission is denied.
+- Killing a process you don't own may require running your terminal as **Administrator** (Windows) or with `sudo` (Unix). nukeport reports a clear error when permission is denied.
 
 ## Requirements
 

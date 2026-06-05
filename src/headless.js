@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * headless.js — non-GUI commands (`nodekill ls`, `nodekill kill <port>`).
+ * headless.js — non-GUI commands (`nukeport ls`, `nukeport kill <port>`).
  */
 
 const { collect } = require('./collector');
@@ -51,7 +51,7 @@ async function printPortsTable() {
       '\n'
     );
   }
-  process.stdout.write('\n' + C.dim + rows.length + ' listening port(s). Run `nodekill` for the interactive dashboard.' + C.reset + '\n');
+  process.stdout.write('\n' + C.dim + rows.length + ' listening port(s). Run `nukeport` for the interactive dashboard.' + C.reset + '\n');
 }
 
 async function killByPortOrPid(target, force) {

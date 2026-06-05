@@ -2,14 +2,14 @@
 'use strict';
 
 /**
- * nodekill CLI entry point.
+ * nukeport CLI entry point.
  *
  * Usage:
- *   nodekill            Launch the interactive terminal GUI dashboard.
- *   nodekill ls         Print listening ports as a plain table and exit.
- *   nodekill kill <p>   Kill whatever process owns port <p> (no GUI).
- *   nodekill --help     Show help.
- *   nodekill --version  Show version.
+ *   nukeport            Launch the interactive terminal GUI dashboard.
+ *   nukeport ls         Print listening ports as a plain table and exit.
+ *   nukeport kill <p>   Kill whatever process owns port <p> (no GUI).
+ *   nukeport --help     Show help.
+ *   nukeport --version  Show version.
  */
 
 const args = process.argv.slice(2);
@@ -21,15 +21,15 @@ function out(s) {
 
 function showHelp() {
   out('');
-  out('  \x1b[1m\x1b[32mnodekill\x1b[0m \x1b[2mv' + pkg.version + '\x1b[0m');
+  out('  \x1b[1m\x1b[32mnukeport\x1b[0m \x1b[2mv' + pkg.version + '\x1b[0m');
   out('  ' + pkg.description);
   out('');
   out('  \x1b[1mUSAGE\x1b[0m');
-  out('    nodekill            Launch the interactive terminal dashboard');
-  out('    nodekill ls         List listening ports as plain text and exit');
-  out('    nodekill kill <p>   Kill the process listening on port <p>');
-  out('    nodekill --help     Show this help');
-  out('    nodekill --version  Print version');
+  out('    nukeport            Launch the interactive terminal dashboard');
+  out('    nukeport ls         List listening ports as plain text and exit');
+  out('    nukeport kill <p>   Kill the process listening on port <p>');
+  out('    nukeport --help     Show this help');
+  out('    nukeport --version  Print version');
   out('');
   out('  \x1b[1mDASHBOARD KEYS\x1b[0m');
   out('    ↑/↓ or j/k   Move selection      Enter / k   Kill selected');
@@ -63,7 +63,7 @@ function showHelp() {
   if (cmd === 'kill' || cmd === 'k') {
     const target = args[1];
     if (!target) {
-      out('\x1b[31m✗\x1b[0m Usage: nodekill kill <port|pid>');
+      out('\x1b[31m✗\x1b[0m Usage: nukeport kill <port|pid>');
       process.exit(1);
     }
     const { killByPortOrPid } = require('../src/headless');
@@ -76,7 +76,7 @@ function showHelp() {
     const { launch } = require('../src/app');
     await launch();
   } catch (err) {
-    process.stderr.write('\x1b[31mnodekill failed to start:\x1b[0m ' + (err && err.stack || err) + '\n');
+    process.stderr.write('\x1b[31mnukeport failed to start:\x1b[0m ' + (err && err.stack || err) + '\n');
     process.exit(1);
   }
 })();

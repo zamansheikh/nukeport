@@ -36,7 +36,7 @@ async function launch() {
   const screen = blessed.screen({
     smartCSR: true,
     fullUnicode: true,
-    title: 'nodekill',
+    title: 'nukeport',
     autoPadding: true,
     dockBorders: true,
   });
@@ -222,7 +222,7 @@ async function launch() {
     const sortLabel = SORTS[state.sortIndex].label;
     const filterTxt = state.filter ? '  {yellow-fg}filter:{/}{black-fg}{yellow-bg} ' + fmt.truncate(state.filter, 20) + ' {/}' : '';
     const left =
-      ' {green-fg}{bold}◤ nodekill{/} {gray-fg}v' + require('../package.json').version + '{/}' +
+      ' {green-fg}{bold}◤ nukeport{/} {gray-fg}v' + require('../package.json').version + '{/}' +
       '   {cyan-fg}' + listening + '{/} {gray-fg}ports{/}' +
       '   {gray-fg}sort:{/}{white-fg}' + sortLabel + '{/}' +
       '   {gray-fg}view:{/}{white-fg}' + (state.onlyListening ? 'listening' : 'all') + '{/}' +
@@ -423,7 +423,7 @@ async function launch() {
       left: 'center',
       width: '60%',
       height: 'shrink',
-      label: ' nodekill — help ',
+      label: ' nukeport — help ',
       tags: true,
       border: { type: 'line' },
       padding: 1,
