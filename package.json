@@ -1,0 +1,47 @@
+{
+  "name": "nkill",
+  "version": "1.0.0",
+  "description": "A beautiful terminal GUI to inspect listening ports, find which project owns each port, kill processes, and monitor your system in real time.",
+  "keywords": [
+    "port",
+    "ports",
+    "kill",
+    "kill-port",
+    "process",
+    "netstat",
+    "lsof",
+    "tui",
+    "terminal",
+    "gui",
+    "dashboard",
+    "monitor",
+    "system-monitor",
+    "node",
+    "devtools"
+  ],
+  "license": "MIT",
+  "author": "nodekill",
+  "type": "commonjs",
+  "main": "src/app.js",
+  "bin": {
+    "nkill": "bin/cli.js",
+    "nk": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "start": "node bin/cli.js",
+    "dev": "node bin/cli.js"
+  },
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.11.0",
+    "systeminformation": "^5.22.11"
+  }
+}

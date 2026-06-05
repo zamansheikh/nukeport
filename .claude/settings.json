@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(node bin/cli.js --version)",
+      "Bash(node bin/cli.js --help)",
+      "Bash(node bin/cli.js ls)",
+      "Bash(node -e \"const {launch}=require\\('./src/app'\\); console.log\\('app.js OK, launch is', typeof launch\\); require\\('./src/headless'\\); require\\('./src/kill'\\); require\\('./src/system'\\); require\\('./src/collector'\\); require\\('./src/format'\\); console.log\\('all modules load OK'\\);\")",
+      "Bash(node _rendertest.js)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(node bin/cli.js kill 59999)",
+      "Bash(npm pack *)"
+    ]
+  }
+}

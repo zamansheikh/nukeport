@@ -1,0 +1,6 @@
+.claude/
+node_modules/
+*.tgz
+.env
+.DS_Store
+.gitignore
