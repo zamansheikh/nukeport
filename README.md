@@ -7,7 +7,7 @@
 It works on **Windows, macOS and Linux**.
 
 ```
-┌ nukeport v1.0.0   12 ports   sort:Port   view:listening ───────── myhost · windows  20:14:31 ┐
+┌ nukeport v1.0.1   12 ports   sort:Port   view:listening ───────── myhost · windows  20:14:31 ┐
 │ Listening Ports ───────────────────────────────────┐ CPU 23% ───────────────────────────┐
 │ Port    PID     Process       Project      CPU  Mem │     ╭╮     ╭─╮                       │
 │ 3000    18244   node          my-next-app  1%   2%  │   ╭─╯╰─────╯ ╰──╮                    │

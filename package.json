@@ -1,6 +1,6 @@
 {
   "name": "nukeport",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A beautiful terminal GUI to inspect listening ports, find which project owns each port, kill processes, and monitor your system in real time.",
   "keywords": [
     "port",

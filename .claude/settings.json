@@ -14,7 +14,15 @@
       "Bash(node -e \"require\\('./src/app'\\);require\\('./src/headless'\\);require\\('./src/kill'\\);console.log\\('modules OK'\\)\")",
       "Bash(node -e \"console.log\\(require\\('./package.json'\\).name, '| bins:', Object.keys\\(require\\('./package.json'\\).bin\\).join\\(','\\)\\)\")",
       "Bash(npm publish *)",
-      "Bash(node -e \"const p=require\\('./package.json'\\);console.log\\('name:',p.name,'| bins:',Object.keys\\(p.bin\\).join\\(','\\)\\)\")"
+      "Bash(node -e \"const p=require\\('./package.json'\\);console.log\\('name:',p.name,'| bins:',Object.keys\\(p.bin\\).join\\(','\\)\\)\")",
+      "Bash(node _linetest.js)",
+      "Bash(grep -n \"color\\\\|getColorCode\\\\|style.line\\\\|\\\\\\\\\\\\\\\\x1b\\\\|\\\\\\\\\\\\\\\\u001b\\\\|fontColor\\\\|\\\\\\\\[3\" node_modules/blessed-contrib/lib/widget/line.js)",
+      "Bash(sed -n '55,72p' node_modules/blessed-contrib/lib/utils.js)",
+      "Bash(grep -rn \"strokeStyle\\\\|_color\\\\|x256\\\\|\\\\\\\\[3\\\\|undefined\" node_modules/drawille-canvas-blessed-contrib/index.js)",
+      "Bash(rm -f _linetest.js _rendertest.js)",
+      "Bash(node -e \"require\\('./src/app'\\);console.log\\('OK'\\)\")",
+      "Bash(npm view *)",
+      "Bash(npm version *)"
     ]
   }
 }

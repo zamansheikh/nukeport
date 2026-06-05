@@ -96,7 +96,11 @@ async function launch() {
     minY: 0,
     maxY: 100,
     border: { type: 'line' },
-    style: { border: { fg: 'green' }, line: 'green', text: 'green', baseline: 'gray' },
+    // NOTE: the braille canvas only maps the 8 base color *names*
+    // (black/red/green/yellow/blue/magenta/cyan/white). Any other name —
+    // e.g. 'gray' — becomes "\x1b[3undefinedm", a malformed escape that
+    // corrupts the whole chart. Use RGB arrays (resolved via x256) instead.
+    style: { border: { fg: 'green' }, line: [0, 200, 80], text: [120, 200, 140], baseline: [90, 90, 90] },
   });
 
   // ---- Memory gauge ------------------------------------------------------
@@ -277,8 +281,10 @@ async function launch() {
     if (state.cpuHist.length > HISTORY) state.cpuHist.shift();
 
     const x = state.cpuHist.map((_, i) => String(i));
+    // RGB arrays only — see the canvas-color note on the cpuLine definition.
+    const lineColor = snap.cpu > 85 ? [220, 60, 60] : snap.cpu > 60 ? [220, 200, 60] : [0, 200, 80];
     cpuLine.setLabel(' CPU ' + fmt.pct(snap.cpu) + ' ');
-    cpuLine.setData([{ title: 'cpu', x, y: state.cpuHist, style: { line: snap.cpu > 85 ? 'red' : snap.cpu > 60 ? 'yellow' : 'green' } }]);
+    cpuLine.setData([{ title: 'cpu', x, y: state.cpuHist, style: { line: lineColor } }]);
 
     const memPct = snap.memTotal ? (snap.memUsed / snap.memTotal) * 100 : 0;
     memGauge.setLabel(' Memory ' + fmt.pct(memPct) + ' ');
